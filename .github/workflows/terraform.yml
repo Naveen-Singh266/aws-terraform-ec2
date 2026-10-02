@@ -82,7 +82,6 @@ jobs:
           - name: Wait Before Destroy
             run: |
             echo "EC2 will remain running for 5 minutes..."
-            sleep 300
-
+            sleep 120
           - name: Terraform Destroy
             run: terraform destroy -auto-approve
