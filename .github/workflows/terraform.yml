@@ -56,6 +56,21 @@ jobs:
     needs: build
 
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init -input=false
 
       - name: Verify Nginx
         run: |
@@ -79,9 +94,12 @@ jobs:
 
           echo "Nginx verification failed."
           exit 1
-          - name: Wait Before Destroy
-            run: |
-            echo "EC2 will remain running for 5 minutes..."
-            sleep 120
-          - name: Terraform Destroy
-            run: terraform destroy -auto-approve
+      - name: Wait Before Destroy
+        run: |
+          echo "EC2 will remain running for 2 minutes..."
+          sleep 120
+
+      - name: Terraform Destroy
+        run: |
+          echo "Starting Terraform Destroy..."
+          terraform destroy -auto-approve
