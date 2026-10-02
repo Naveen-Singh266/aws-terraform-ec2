@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 2,
+  "agentName": "DESKTOP-6UHHD2U",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus9.actions.githubusercontent.com/iRkJDiybSet4Dz4RwZF0cBRXZwNRj4AobwLjdvrUtbpcR73CnV/",
+  "gitHubUrl": "https://github.com/Naveen-Singh266/aws-terraform-ec2",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
