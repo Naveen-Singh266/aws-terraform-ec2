@@ -79,3 +79,10 @@ jobs:
 
           echo "Nginx verification failed."
           exit 1
+          - name: Wait Before Destroy
+            run: |
+            echo "EC2 will remain running for 5 minutes..."
+            sleep 300
+
+          - name: Terraform Destroy
+            run: terraform destroy -auto-approve
